@@ -1,0 +1,49 @@
+<VirtualHost *:80>
+  ServerAlias chefched.com
+  ServerAlias www.chefched.com
+
+  WSGIDaemonProcess cookbook user=www-data group=www-data threads=5
+  WSGIScriptAlias / /www/cookbook/cookbook/cookbook.wsgi
+
+  <Directory /www/cookbook/cookbook>
+    WSGIProcessGroup cookbook
+  </Directory>
+  ErrorLog /www/cookbook/log/error.log
+  CustomLog /www/cookbook/log/access.log combined
+</VirtualHost>
+
+Listen 1234
+NameVirtualHost *:1234
+
+<VirtualHost *:80 *:1234>
+  ServerAlias trailmix.rocks
+  ServerAlias www.trailmix.rocks
+
+  WSGIDaemonProcess blog user=www-data group=www-data threads=5
+  WSGIScriptAlias / /www/blog/blog/blog.wsgi
+
+  <Directory /www/blog/blog>
+    WSGIProcessGroup blog
+  </Directory>
+  ErrorLog /www/blog/log/error.log
+  CustomLog /www/blog/log/access.log combined
+</VirtualHost>
+
+Listen 5678
+NameVirtualHost *:5678
+
+<VirtualHost *:80 *:5678>
+
+  ServerAlias wol.trailmix.rocks
+  ServerAlias www.wol.trailmix.rocks
+
+  WSGIDaemonProcess wol user=www-data group=www-data threads=5
+  WSGIScriptAlias / /www/wol/wol/wol.wsgi
+
+  <Directory /www/wol/wol>
+    WSGIProcessGroup wol
+  </Directory>
+  ErrorLog /www/wol/log/error.log
+  CustomLog /www/wol/log/access.log combined
+</VirtualHost>
+

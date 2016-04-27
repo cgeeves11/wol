@@ -8,7 +8,7 @@ import ConfigParser
 
 
 app = Flask(__name__)
-app.config.from_pyfile('../app.cfg')
+app.config.from_pyfile('app.cfg')
 
 generalbroadcast='192.168.0.255'
 livroom ='D4-BE-D9-A4-52-6F'

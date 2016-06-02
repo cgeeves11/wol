@@ -46,4 +46,3 @@ NameVirtualHost *:5678
   ErrorLog /www/wol/wol/log/error.log
   CustomLog /www/wol/wol/log/access.log combined
 </VirtualHost>
-
